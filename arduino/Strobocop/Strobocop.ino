@@ -8,14 +8,14 @@ const uint8_t strobeChannel = 2;
 const uint8_t redChannel = 3;
 const uint8_t greenChannel = 4;
 const uint8_t whiteChannel = 6;
-const uint8_t smokeChannel = 30;
+const uint8_t smokeChannel = 64;
 
 // Thresholds based on micDiff, not raw mic value
 const int micThreshold = 12;  // to trigger smoke
 const int micMin = 10;        // min difference for light response
 const int micMax = 40;        // max difference mapped to full brightness
 
-const unsigned long smokeDuration = 3000;
+const unsigned long smokeDuration = 1500;
 const unsigned long activeDuration = 10000;
 const unsigned long busyDuration = 10000;
 
@@ -54,7 +54,7 @@ void setStatusBusy() {
 void setup() {
   Serial.begin(9600);
   DmxSimple.usePin(dmxPin);
-  DmxSimple.maxChannel(30);
+  DmxSimple.maxChannel(65);
 
   // Init DMX channels
   setDmx(smokeChannel, 0);
